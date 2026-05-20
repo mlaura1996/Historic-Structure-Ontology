@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" href="resources/primer.css" media="screen"/>
+<link rel="stylesheet" href="resources/rec.css" media="screen"/>
+<link rel="stylesheet" href="resources/extra.css" media="screen"/>
+<link rel="stylesheet" href="resources/owl.css" media="screen"/>
+<link rel="stylesheet" href="resources/dark.css" media="(prefers-color-scheme: dark)"/>
+<link rel="stylesheet" href="resources/light.css" media="(prefers-color-scheme: light)"/>
+<link rel="stylesheet" href="resources/slider.css" media="screen"/>
+<meta name="color-scheme" content="dark light">
+<script type="module" src="resources/dark-mode-toggle.mjs"></script><div class="darkmode">
+	<dark-mode-toggle class="slider"></dark-mode-toggle>
+</div>
+ <title>Historic Structure Ontology (HSTO)</title>
+
+
+<!-- SCHEMA.ORG METADATA -->
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","url":"https://w3id.org/hsto#","image":"http://vowl.visualdataweb.org/webvowl/#iri=https://w3id.org/hsto#","name":"Historic Structure Ontology (HSTO)", "headline":"Document describing the ontology https://w3id.org/hsto#", "dateReleased":"Wed May 20 13:13:36 BST 2026", "version":"1.0.0", "license":"https://creativecommons.org/licenses/by/4.0/", "author":[{"@type":"Person","name":"Maria Laura Leonardi"},{"@type":"Person","name":"Stefano Cursi"},{"@type":"Person","name":"Letizia Martinelli"},{"@type":"Person","name":"Elena Gigliarelli"},{"@type":"Person","name":"Miguel Azenha"},{"@type":"Person","name":"Daniel V. Oliveira"}]}</script>
+
+<script src="resources/jquery.js"></script> 
+<script src="resources/marked.min.js"></script> 
+    <script> 
+function loadHash() {
+  jQuery(".markdown").each(function(el){jQuery(this).after(marked.parse(jQuery(this).text())).remove()});
+	var hash = location.hash;
+	if($(hash).offset()!=null){
+	  $('html, body').animate({scrollTop: $(hash).offset().top}, 0);
+}
+	loadTOC();
+}
+function loadTOC(){
+	//process toc dynamically
+	  var t='<h2>Table of contents</h2><ul>';i = 1;j=0;
+	  jQuery(".list").each(function(){
+		if(jQuery(this).is('h2')){
+			if(j>0){
+				t+='</ul>';
+				j=0;
+			}
+			t+= '<li>'+i+'. <a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+			i++;
+		}
+		if(jQuery(this).is('h3')){
+			if(j==0){
+				t+='<ul>';
+			}
+			j++;
+			t+= '<li>'+(i-1)+'.'+j+'. '+'<a href=#'+ jQuery(this).attr('id')+'>'+ jQuery(this).ignore("span").text()+'</a></li>';
+		}
+	  });
+	  t+='</ul>';
+	  $("#toc").html(t); 
+}
+$(function(){
+    loadHash();
+}); $.fn.ignore = function(sel){
+        return this.clone().find(sel||">*").remove().end();
+ }; 
+   </script> 
+  </head> 
+
+<body>
+<div class="container">
+<div class="head">
+<div style="float:right">language <a href="index-en.html"><b>en</b></a> </div>
+<h1>Historic Structure Ontology (HSTO)</h1>
+
+
+<dl>
+<dt>Latest version:</dt>
+<dd><a href="https://w3id.org/hsto#">https://w3id.org/hsto#</a></dd>
+<dt>Revision:</dt>
+<dd>1.0.0</dd>
+<dt>Authors:</dt>
+<dd>Maria Laura Leonardi</dd><dd>Stefano Cursi</dd><dd>Letizia Martinelli</dd><dd>Elena Gigliarelli</dd><dd>Miguel Azenha</dd><dd>Daniel V. Oliveira</dd>
+
+<dt>Imported Ontologies:</dt>
+<dd><a href="https://w3id.org/beo#">beo#</a></dd><dd><a href="https://w3id.org/dot#">dot#</a></dd>
+
+<dt>Download serialization:</dt><dd><span><a href="ontology.jsonld" target="_blank"><img src="https://img.shields.io/badge/Format-JSON_LD-blue.svg" alt="JSON-LD" /></a> </span><span><a href="ontology.owl" target="_blank"><img src="https://img.shields.io/badge/Format-RDF/XML-blue.svg" alt="RDF/XML" /></a> </span><span><a href="ontology.nt" target="_blank"><img src="https://img.shields.io/badge/Format-N_Triples-blue.svg" alt="N-Triples" /></a> </span><span><a href="ontology.ttl" target="_blank"><img src="https://img.shields.io/badge/Format-TTL-blue.svg" alt="TTL" /></a> </span></dd><dt>License:</dt><dd><a href="https://creativecommons.org/licenses/by/4.0/" target="_blank"><img src="https://img.shields.io/badge/License-https://creativecommons.org/licenses/by/4.0/-blue.svg" alt="https://creativecommons.org/licenses/by/4.0/" /></a>
+</dd><dt>Visualization:</dt><dd><a href="webvowl/index.html#" target="_blank"><img src="https://img.shields.io/badge/Visualize_with-WebVowl-blue.svg" alt="Visualize with WebVowl" /></a></dd>
+<!-- <dt>Evaluation:</dt><dd><a href="OOPSevaluation/oopsEval.html#" target="_blank"><img src="https://img.shields.io/badge/Evaluate_with-OOPS! (OntOlogy Pitfall Scanner!)-blue.svg" alt="Evaluate with OOPS!" /></a></dd> --><dt>Cite as:</dt>
+<dd>Maria Laura Leonardi, Stefano Cursi, Letizia Martinelli, Elena Gigliarelli, Miguel Azenha, Daniel V. Oliveira. Historic Structure Ontology (HSTO). Revision: 1.0.0.</dd>
+</dl>
+
+<hr/>
+</div>
+<div class="status">
+<div>
+<span>Ontology Specification Draft</span>
+</div>
+</div>     <div id="abstract">The Historic Structure Ontology (HSTO) provides a formal knowledge representation of the physical configuration of historic masonry aggregates, explicitly modelling the relationships among their structural components. The ontology introduces hsto:StructuralPart as its central class, from which two main subclasses are derived: hsto:Facade and hsto:HorizontalStructure. Facades are further linked to historic openings and their heritage-specific components — jambs, sills, lintels, arches — extending standard BIM schemas with historically grounded construction details. Horizontal structures are decomposed into timber floors and masonry vaults, with timber floors further articulated into beams, joists, and planks. HSTO also models structural connections as explicit first-class objects, with two prevalent subtypes — quoins and ties — and a connection quality property to support FEM modelling strategies. Each structural part can be associated with datation information, accessibility assessments, damage instances (via DOT), and traditional construction techniques (via HSV), enabling a comprehensive and interoperable description of historic masonry buildings for structural analysis and heritage documentation.
+</div>
+<div id="toc"></div> 
+
+<!--INTRODUCTION SECTION-->
+    <div id="introduction">The structural characterisation of historic masonry buildings requires the representation of building elements and construction details that are systematically absent from modern digital construction schemas such as IFC. Features such as quoins, relieving arches, historic openings with their datation, and the variety of horizontal structural assemblies found in historic fabrics — from timber floors to masonry vaults — demand a dedicated ontological framework that goes beyond what standard BIM vocabularies currently offer.
+
+The Historic Structure Ontology (HSTO) addresses this gap by providing a formal representation of the physical configuration of masonry aggregates and the relationships among their structural components. The ontology is organised around the class hsto:StructuralPart, which serves as the main category for modelling individual structural components. From this class, two primary subclasses are derived: hsto:Facade, which captures the exterior wall surface of a structural unit including its opening layout and masonry typology, and hsto:HorizontalStructure, which models floor and roof assemblies providing diaphragm rigidity to the aggregate.
+
+HSTO introduces structural connections as explicit first-class objects rather than implicit geometric contacts, allowing the qualitative assessment of connection effectiveness to directly inform structural modelling choices. The ontology further enriches standard BIM entities from the Building Element Ontology (BEO) with heritage-specific opening components — sill, jamb, lintel, arch — and links structural parts to damage descriptions via the Damage Typology Ontology (DOT) and to traditional construction techniques via the Historic Survey Ontology (HSV).
+
+HSTO is published at https://w3id.org/hsto and is available in Turtle serialisation under a Creative Commons Attribution 4.0 licence. This ontology was developed in the context of the following research: Cursi, S., Martinelli, L., Gigliarelli, E., Leonardi, M. L., Azenha, M., & Oliveira, D. V. (2025). Leveraging linked data for enhanced knowledge representation in historical centers safety assessment: insights from Castelnuovo di Porto, Rome. Archeologia e Calcolatori, Supplemento 13, 217–231. https://doi.org/10.19282/acs.13.2025.16
+</div>
+  
+
+<!--OVERVIEW SECTION-->
+    <div id="overview"><h2 id="overv" class="list">Historic Structure Ontology (HSTO): Overview <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<span class="markdown">
+This ontology has the following classes and properties.</span>
+<h4>Classes</h4>
+<ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#Arch" title="https://w3id.org/hsto#Arch">Arch</a>
+   </li>
+   <li>
+      <a href="#Connection" title="https://w3id.org/hsto#Connection">Connection</a>
+   </li>
+   <li>
+      <a href="#Facade" title="https://w3id.org/hsto#Facade">Facade</a>
+   </li>
+   <li>
+      <a href="#Header" title="https://w3id.org/hsto#Header">Header</a>
+   </li>
+   <li>
+      <a href="#HistoricOpening" title="https://w3id.org/hsto#HistoricOpening">Historic Opening</a>
+   </li>
+   <li>
+      <a href="#HorizontalStructure" title="https://w3id.org/hsto#HorizontalStructure">Horizontal Structure</a>
+   </li>
+   <li>
+      <a href="#Jamb" title="https://w3id.org/hsto#Jamb">Jamb</a>
+   </li>
+   <li>
+      <a href="#Joist" title="https://w3id.org/hsto#Joist">Joist</a>
+   </li>
+   <li>
+      <a href="#Lintel" title="https://w3id.org/hsto#Lintel">Lintel</a>
+   </li>
+   <li>
+      <a href="#MainBeam" title="https://w3id.org/hsto#MainBeam">Main Beam</a>
+   </li>
+   <li>
+      <a href="#Plank" title="https://w3id.org/hsto#Plank">Plank</a>
+   </li>
+   <li>
+      <a href="#Quoin" title="https://w3id.org/hsto#Quoin">Quoin</a>
+   </li>
+   <li>
+      <a href="#Sill" title="https://w3id.org/hsto#Sill">Sill</a>
+   </li>
+   <li>
+      <a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a>
+   </li>
+   <li>
+      <a href="#Tie" title="https://w3id.org/hsto#Tie">Tie</a>
+   </li>
+   <li>
+      <a href="#TimberFloor" title="https://w3id.org/hsto#TimberFloor">Timber Floor</a>
+   </li>
+   <li>
+      <a href="#Vault" title="https://w3id.org/hsto#Vault">Vault</a>
+   </li>
+   <li>
+      <a href="#VaultPart" title="https://w3id.org/hsto#VaultPart">Vault Part</a>
+   </li>
+</ul><h4>Object Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#hasDamage" title="https://w3id.org/hsto#hasDamage">has damage</a>
+   </li>
+   <li>
+      <a href="#hasHistoricOpening" title="https://w3id.org/hsto#hasHistoricOpening">has historic opening</a>
+   </li>
+   <li>
+      <a href="#hasJoist" title="https://w3id.org/hsto#hasJoist">has joist</a>
+   </li>
+   <li>
+      <a href="#hasMainBeam" title="https://w3id.org/hsto#hasMainBeam">has main beam</a>
+   </li>
+   <li>
+      <a href="#hasOpeningComponent" title="https://w3id.org/hsto#hasOpeningComponent">has opening component</a>
+   </li>
+   <li>
+      <a href="#hasPlank" title="https://w3id.org/hsto#hasPlank">has plank</a>
+   </li>
+   <li>
+      <a href="#hasVaultPart" title="https://w3id.org/hsto#hasVaultPart">has vault part</a>
+   </li>
+   <li>
+      <a href="#isBuiltWithTraditionalConstructionTechnique"
+         title="https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique">is built with traditional construction technique</a>
+   </li>
+   <li>
+      <a href="#isConnectedTo" title="https://w3id.org/hsto#isConnectedTo">is connected to</a>
+   </li>
+   <li>
+      <a href="#isCoveredBy" title="https://w3id.org/hsto#isCoveredBy">is covered by</a>
+   </li>
+   <li>
+      <a href="#isHostedByDoor" title="https://w3id.org/hsto#isHostedByDoor">is hosted by door</a>
+   </li>
+   <li>
+      <a href="#isHostedByWindow" title="https://w3id.org/hsto#isHostedByWindow">is hosted by window</a>
+   </li>
+   <li>
+      <a href="#isMadeOf" title="https://w3id.org/hsto#isMadeOf">is made of</a>
+   </li>
+</ul><h4>Data Properties</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#hasAbsoluteDatation" title="https://w3id.org/hsto#hasAbsoluteDatation">has absolute datation</a>
+   </li>
+   <li>
+      <a href="#hasAccessibility" title="https://w3id.org/hsto#hasAccessibility">has accessibility</a>
+   </li>
+   <li>
+      <a href="#hasConnectionQuality" title="https://w3id.org/hsto#hasConnectionQuality">has connection quality</a>
+   </li>
+   <li>
+      <a href="#hasHeight" title="https://w3id.org/hsto#hasHeight">has height</a>
+   </li>
+   <li>
+      <a href="#hasLength" title="https://w3id.org/hsto#hasLength">has length</a>
+   </li>
+   <li>
+      <a href="#hasRelativeDatation" title="https://w3id.org/hsto#hasRelativeDatation">has relative datation</a>
+   </li>
+   <li>
+      <a href="#stiffness" title="https://w3id.org/hsto#stiffness">stiffness</a>
+   </li>
+</ul><h4>Named Individuals</h4><ul xmlns:widoco="https://w3id.org/widoco/vocab#"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    class="hlist">
+   <li>
+      <a href="#https://w3id.org/hsto" title="https://w3id.org/hsto">
+         <span>hsto</span>
+      </a>
+   </li>
+</ul><iframe src="webvowl/index.html"></iframe> 
+</div>
+  
+
+<!--DESCRIPTION SECTION-->
+    <div id="description"><h2 id="desc" class="list">Historic Structure Ontology (HSTO): Description <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+<span class="markdown">The Historic Structure Ontology (HSTO) provides a formal representation of the physical configuration of masonry aggregates by explicitly modelling the relationships among their structural components, including facades, horizontal structures, openings, and connections.</span></div>
+   
+
+<!--CROSSREF SECTION-->
+   <div id="crossref"><h2 id="crossreference" class="list">Cross-reference for Historic Structure Ontology (HSTO) classes, object properties and data properties <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+This section provides details for each class and property defined by Historic Structure Ontology (HSTO).
+<div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="classes">
+ <h3 id="classes-headline" class="list">Classes</h3>
+ <ul class="hlist">
+  <li><a href="#Arch" title="https://w3id.org/hsto#Arch">Arch</a></li>
+  <li><a href="#Connection" title="https://w3id.org/hsto#Connection">Connection</a></li>
+  <li><a href="#Facade" title="https://w3id.org/hsto#Facade">Facade</a></li>
+  <li><a href="#Header" title="https://w3id.org/hsto#Header">Header</a></li>
+  <li><a href="#HistoricOpening" title="https://w3id.org/hsto#HistoricOpening">Historic Opening</a></li>
+  <li><a href="#HorizontalStructure" title="https://w3id.org/hsto#HorizontalStructure">Horizontal Structure</a></li>
+  <li><a href="#Jamb" title="https://w3id.org/hsto#Jamb">Jamb</a></li>
+  <li><a href="#Joist" title="https://w3id.org/hsto#Joist">Joist</a></li>
+  <li><a href="#Lintel" title="https://w3id.org/hsto#Lintel">Lintel</a></li>
+  <li><a href="#MainBeam" title="https://w3id.org/hsto#MainBeam">Main Beam</a></li>
+  <li><a href="#Plank" title="https://w3id.org/hsto#Plank">Plank</a></li>
+  <li><a href="#Quoin" title="https://w3id.org/hsto#Quoin">Quoin</a></li>
+  <li><a href="#Sill" title="https://w3id.org/hsto#Sill">Sill</a></li>
+  <li><a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a></li>
+  <li><a href="#Tie" title="https://w3id.org/hsto#Tie">Tie</a></li>
+  <li><a href="#TimberFloor" title="https://w3id.org/hsto#TimberFloor">Timber Floor</a></li>
+  <li><a href="#Vault" title="https://w3id.org/hsto#Vault">Vault</a></li>
+  <li><a href="#VaultPart" title="https://w3id.org/hsto#VaultPart">Vault Part</a></li>
+ </ul>
+ <div class="entity" id="Arch">
+  <h3>Arch<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Arch</p>
+  <div class="comment">
+   <span class="markdown">A curved spanning element closing the top of a historic opening, typically featuring a keystone.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Header" title="https://w3id.org/hsto#Header">Header</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasOpeningComponent" title="https://w3id.org/hsto#hasOpeningComponent">has opening component</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Connection">
+  <h3>Connection<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Connection</p>
+  <div class="comment">
+   <span class="markdown">An explicit first-class object representing the physical interface between exactly two structural parts, enabling qualitative assessment of connection effectiveness.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#Quoin" title="https://w3id.org/hsto#Quoin">Quoin</a> <sup class="type-c" title="class">c</sup>, <a href="#Tie" title="https://w3id.org/hsto#Tie">Tie</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasConnectionQuality" title="https://w3id.org/hsto#hasConnectionQuality">has connection quality</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#isConnectedTo" title="https://w3id.org/hsto#isConnectedTo">is connected to</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Facade">
+  <h3>Facade<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Facade</p>
+  <div class="comment">
+   <span class="markdown">A distinct structural object representing the exterior wall surface of a structural unit, capturing opening layout regularity, masonry typology variations, and damage patterns.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasHeight" title="https://w3id.org/hsto#hasHeight">has height</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#hasHistoricOpening" title="https://w3id.org/hsto#hasHistoricOpening">has historic opening</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasLength" title="https://w3id.org/hsto#hasLength">has length</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#isMadeOf" title="https://w3id.org/hsto#isMadeOf">is made of</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Header">
+  <h3>Header<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Header</p>
+  <div class="comment">
+   <span class="markdown">The horizontal spanning element at the top of a historic opening; superclass of hsto:Lintel and hsto:Arch.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="https://w3id.org/beo#BuildingElementPart" target="_blank" title="https://w3id.org/beo#BuildingElementPart">Building Element Part</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#Arch" title="https://w3id.org/hsto#Arch">Arch</a> <sup class="type-c" title="class">c</sup>, <a href="#Lintel" title="https://w3id.org/hsto#Lintel">Lintel</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasOpeningComponent" title="https://w3id.org/hsto#hasOpeningComponent">has opening component</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="HistoricOpening">
+  <h3>Historic Opening<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#HistoricOpening</p>
+  <div class="comment">
+   <span class="markdown">A wall opening considered historic, associated with both relative and absolute dating, whose configuration is relevant for seismic assessment.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasAbsoluteDatation" title="https://w3id.org/hsto#hasAbsoluteDatation">has absolute datation</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#hasRelativeDatation" title="https://w3id.org/hsto#hasRelativeDatation">has relative datation</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#isHostedByDoor" title="https://w3id.org/hsto#isHostedByDoor">is hosted by door</a> <sup class="type-op" title="object property">op</sup>, <a href="#isHostedByWindow" title="https://w3id.org/hsto#isHostedByWindow">is hosted by window</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasHistoricOpening" title="https://w3id.org/hsto#hasHistoricOpening">has historic opening</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="HorizontalStructure">
+  <h3>Horizontal Structure<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#HorizontalStructure</p>
+  <div class="comment">
+   <span class="markdown">A horizontal structural element such as a floor or roof assembly, providing diaphragm rigidity to the masonry aggregate.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#TimberFloor" title="https://w3id.org/hsto#TimberFloor">Timber Floor</a> <sup class="type-c" title="class">c</sup>, <a href="#Vault" title="https://w3id.org/hsto#Vault">Vault</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#isCoveredBy" title="https://w3id.org/hsto#isCoveredBy">is covered by</a> <sup class="type-op" title="object property">op</sup>, <a href="#stiffness" title="https://w3id.org/hsto#stiffness">stiffness</a> <sup class="type-dp" title="data property">dp</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Jamb">
+  <h3>Jamb<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Jamb</p>
+  <div class="comment">
+   <span class="markdown">The vertical side framing element of a historic opening.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="https://w3id.org/beo#BuildingElementPart" target="_blank" title="https://w3id.org/beo#BuildingElementPart">Building Element Part</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasOpeningComponent" title="https://w3id.org/hsto#hasOpeningComponent">has opening component</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Joist">
+  <h3>Joist<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Joist</p>
+  <div class="comment">
+   <span class="markdown">A secondary timber element spanning between main beams or walls, supporting the floor planking.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasJoist" title="https://w3id.org/hsto#hasJoist">has joist</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Lintel">
+  <h3>Lintel<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Lintel</p>
+  <div class="comment">
+   <span class="markdown">A flat horizontal spanning element closing the top of a historic opening.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Header" title="https://w3id.org/hsto#Header">Header</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasOpeningComponent" title="https://w3id.org/hsto#hasOpeningComponent">has opening component</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="MainBeam">
+  <h3>Main Beam<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#MainBeam</p>
+  <div class="comment">
+   <span class="markdown">A primary timber beam supporting smaller joists in a timber floor assembly.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasMainBeam" title="https://w3id.org/hsto#hasMainBeam">has main beam</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Plank">
+  <h3>Plank<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Plank</p>
+  <div class="comment">
+   <span class="markdown">A timber plank forming the floor deck, providing diaphragm rigidity when overlaid.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasPlank" title="https://w3id.org/hsto#hasPlank">has plank</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Quoin">
+  <h3>Quoin<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Quoin</p>
+  <div class="comment">
+   <span class="markdown">A connection formed by regularly cut interlocking corner stones providing enhanced mechanical interlocking between orthogonal walls.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Connection" title="https://w3id.org/hsto#Connection">Connection</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Sill">
+  <h3>Sill<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Sill</p>
+  <div class="comment">
+   <span class="markdown">The base threshold element of a historic opening.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="https://w3id.org/beo#BuildingElementPart" target="_blank" title="https://w3id.org/beo#BuildingElementPart">Building Element Part</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasOpeningComponent" title="https://w3id.org/hsto#hasOpeningComponent">has opening component</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="StructuralPart">
+  <h3>Structural Part<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#StructuralPart</p>
+  <div class="comment">
+   <span class="markdown">The main category for modelling individual structural components of a historic masonry aggregate, exhibiting material and construction homogeneity.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has sub-classes
+   </dt>
+   <dd>
+    <a href="#Facade" title="https://w3id.org/hsto#Facade">Facade</a> <sup class="type-c" title="class">c</sup>, <a href="#HorizontalStructure" title="https://w3id.org/hsto#HorizontalStructure">Horizontal Structure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasAbsoluteDatation" title="https://w3id.org/hsto#hasAbsoluteDatation">has absolute datation</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#hasAccessibility" title="https://w3id.org/hsto#hasAccessibility">has accessibility</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#hasDamage" title="https://w3id.org/hsto#hasDamage">has damage</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasRelativeDatation" title="https://w3id.org/hsto#hasRelativeDatation">has relative datation</a> <sup class="type-dp" title="data property">dp</sup>, <a href="#isBuiltWithTraditionalConstructionTechnique" title="https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique">is built with traditional construction technique</a> <sup class="type-op" title="object property">op</sup>, <a href="#isConnectedTo" title="https://w3id.org/hsto#isConnectedTo">is connected to</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Tie">
+  <h3>Tie<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Tie</p>
+  <div class="comment">
+   <span class="markdown">A connection formed by metallic or wooden anchors used to tie structural parts together in historic masonry construction.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#Connection" title="https://w3id.org/hsto#Connection">Connection</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="TimberFloor">
+  <h3>Timber Floor<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#TimberFloor</p>
+  <div class="comment">
+   <span class="markdown">A horizontal structural assembly composed of timber elements such as beams, joists, and planks.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#HorizontalStructure" title="https://w3id.org/hsto#HorizontalStructure">Horizontal Structure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasJoist" title="https://w3id.org/hsto#hasJoist">has joist</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasMainBeam" title="https://w3id.org/hsto#hasMainBeam">has main beam</a> <sup class="type-op" title="object property">op</sup>, <a href="#hasPlank" title="https://w3id.org/hsto#hasPlank">has plank</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="Vault">
+  <h3>Vault<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#Vault</p>
+  <div class="comment">
+   <span class="markdown">A masonry vault used as a horizontal structural element, typically in lower storeys. Kept generic at TBox level; specific vault typologies are articulated at ABox level through hsto:VaultPart instances.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    has super-classes
+   </dt>
+   <dd>
+    <a href="#HorizontalStructure" title="https://w3id.org/hsto#HorizontalStructure">Horizontal Structure</a> <sup class="type-c" title="class">c</sup>
+   </dd>
+   <dt>
+    is in domain of
+   </dt>
+   <dd>
+    <a href="#hasVaultPart" title="https://w3id.org/hsto#hasVaultPart">has vault part</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+ <div class="entity" id="VaultPart">
+  <h3>Vault Part<sup class="type-c" title="class">c</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#VaultPart</p>
+  <div class="comment">
+   <span class="markdown">A constituent part of a masonry vault, used at ABox level to articulate specific vault typologies and geometries.</span>
+  </div>
+  <dl class="description">
+   <dt>
+    is in range of
+   </dt>
+   <dd>
+    <a href="#hasVaultPart" title="https://w3id.org/hsto#hasVaultPart">has vault part</a> <sup class="type-op" title="object property">op</sup>
+   </dd>
+  </dl>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="objectproperties">
+ <h3 id="properties" class="list">Object Properties</h3>
+ <ul class="hlist">
+  <li><a href="#hasDamage" title="https://w3id.org/hsto#hasDamage">has damage</a></li>
+  <li><a href="#hasHistoricOpening" title="https://w3id.org/hsto#hasHistoricOpening">has historic opening</a></li>
+  <li><a href="#hasJoist" title="https://w3id.org/hsto#hasJoist">has joist</a></li>
+  <li><a href="#hasMainBeam" title="https://w3id.org/hsto#hasMainBeam">has main beam</a></li>
+  <li><a href="#hasOpeningComponent" title="https://w3id.org/hsto#hasOpeningComponent">has opening component</a></li>
+  <li><a href="#hasPlank" title="https://w3id.org/hsto#hasPlank">has plank</a></li>
+  <li><a href="#hasVaultPart" title="https://w3id.org/hsto#hasVaultPart">has vault part</a></li>
+  <li><a href="#isBuiltWithTraditionalConstructionTechnique" title="https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique">is built with traditional construction technique</a></li>
+  <li><a href="#isConnectedTo" title="https://w3id.org/hsto#isConnectedTo">is connected to</a></li>
+  <li><a href="#isCoveredBy" title="https://w3id.org/hsto#isCoveredBy">is covered by</a></li>
+  <li><a href="#isHostedByDoor" title="https://w3id.org/hsto#isHostedByDoor">is hosted by door</a></li>
+  <li><a href="#isHostedByWindow" title="https://w3id.org/hsto#isHostedByWindow">is hosted by window</a></li>
+  <li><a href="#isMadeOf" title="https://w3id.org/hsto#isMadeOf">is made of</a></li>
+ </ul>
+ <div class="entity" id="hasDamage">
+  <h3>has damage<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasDamage</p>
+  <div class="comment">
+   <span class="markdown">Associates a structural part with one or more damage instances described using the Damage Typology Ontology (DOT).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://w3id.org/dot#Damage" target="_blank" title="https://w3id.org/dot#Damage">Damage</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasHistoricOpening">
+  <h3>has historic opening<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasHistoricOpening</p>
+  <div class="comment">
+   <span class="markdown">Links a facade to one or more historic openings present on its surface.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Facade" title="https://w3id.org/hsto#Facade">Facade</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#HistoricOpening" title="https://w3id.org/hsto#HistoricOpening">Historic Opening</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasJoist">
+  <h3>has joist<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasJoist</p>
+  <div class="comment">
+   <span class="markdown">Links a timber floor to its joist elements.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#TimberFloor" title="https://w3id.org/hsto#TimberFloor">Timber Floor</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Joist" title="https://w3id.org/hsto#Joist">Joist</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasMainBeam">
+  <h3>has main beam<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasMainBeam</p>
+  <div class="comment">
+   <span class="markdown">Links a timber floor to its primary beam elements.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#TimberFloor" title="https://w3id.org/hsto#TimberFloor">Timber Floor</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#MainBeam" title="https://w3id.org/hsto#MainBeam">Main Beam</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasOpeningComponent">
+  <h3>has opening component<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasOpeningComponent</p>
+  <div class="comment">
+   <span class="markdown">Links a BEO building element part to a heritage-specific opening component (sill, jamb, header, lintel, arch).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="https://w3id.org/beo#BuildingElementPart" target="_blank" title="https://w3id.org/beo#BuildingElementPart">Building Element Part</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Arch" title="https://w3id.org/hsto#Arch">Arch</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#Header" title="https://w3id.org/hsto#Header">Header</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#Jamb" title="https://w3id.org/hsto#Jamb">Jamb</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#Lintel" title="https://w3id.org/hsto#Lintel">Lintel</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#Sill" title="https://w3id.org/hsto#Sill">Sill</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasPlank">
+  <h3>has plank<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasPlank</p>
+  <div class="comment">
+   <span class="markdown">Links a timber floor to its plank elements forming the floor deck.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#TimberFloor" title="https://w3id.org/hsto#TimberFloor">Timber Floor</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Plank" title="https://w3id.org/hsto#Plank">Plank</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasVaultPart">
+  <h3>has vault part<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasVaultPart</p>
+  <div class="comment">
+   <span class="markdown">Links a vault to its constituent parts, articulated at ABox level to capture specific typologies and geometries.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Vault" title="https://w3id.org/hsto#Vault">Vault</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#VaultPart" title="https://w3id.org/hsto#VaultPart">Vault Part</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isBuiltWithTraditionalConstructionTechnique">
+  <h3>is built with traditional construction technique<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique</p>
+  <div class="comment">
+   <span class="markdown">Links a structural part to a traditional construction technique as documented in the HSV ontology.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://w3id.org/hsv#TraditionalConstructionTechnique" target="_blank" title="https://w3id.org/hsv#TraditionalConstructionTechnique">Traditional Construction Technique</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isConnectedTo">
+  <h3>is connected to<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#isConnectedTo</p>
+  <div class="comment">
+   <span class="markdown">Links a structural part to a connection instance representing the physical interface with another structural part.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="#Connection" title="https://w3id.org/hsto#Connection">Connection</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isCoveredBy">
+  <h3>is covered by<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#isCoveredBy</p>
+  <div class="comment">
+   <span class="markdown">Links a horizontal structure to the BEO covering element (floor finish or roof covering) overlying it.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#HorizontalStructure" title="https://w3id.org/hsto#HorizontalStructure">Horizontal Structure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://w3id.org/beo#Covering" target="_blank" title="https://w3id.org/beo#Covering">Covering</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isHostedByDoor">
+  <h3>is hosted by door<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#isHostedByDoor</p>
+  <div class="comment">
+   <span class="markdown">Links a historic opening to the BEO door element that hosts it.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#HistoricOpening" title="https://w3id.org/hsto#HistoricOpening">Historic Opening</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://w3id.org/beo#Door" target="_blank" title="https://w3id.org/beo#Door">Door</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isHostedByWindow">
+  <h3>is hosted by window<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#isHostedByWindow</p>
+  <div class="comment">
+   <span class="markdown">Links a historic opening to the BEO window element that hosts it.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#HistoricOpening" title="https://w3id.org/hsto#HistoricOpening">Historic Opening</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://w3id.org/beo#Window" target="_blank" title="https://w3id.org/beo#Window">Window</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="isMadeOf">
+  <h3>is made of<sup class="type-op" title="object property">op</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#isMadeOf</p>
+  <div class="comment">
+   <span class="markdown">Links a facade to the masonry wall instances that compose it, each corresponding to a portion with homogeneous geometric and constructional characteristics.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Facade" title="https://w3id.org/hsto#Facade">Facade</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="https://w3id.org/hmo#MasonryWall" target="_blank" title="https://w3id.org/hmo#MasonryWall">Masonry Wall</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="dataproperties">
+ <h3 id="dataproperties-headline" class="list">Data Properties</h3>
+ <ul class="hlist">
+  <li><a href="#hasAbsoluteDatation" title="https://w3id.org/hsto#hasAbsoluteDatation">has absolute datation</a></li>
+  <li><a href="#hasAccessibility" title="https://w3id.org/hsto#hasAccessibility">has accessibility</a></li>
+  <li><a href="#hasConnectionQuality" title="https://w3id.org/hsto#hasConnectionQuality">has connection quality</a></li>
+  <li><a href="#hasHeight" title="https://w3id.org/hsto#hasHeight">has height</a></li>
+  <li><a href="#hasLength" title="https://w3id.org/hsto#hasLength">has length</a></li>
+  <li><a href="#hasRelativeDatation" title="https://w3id.org/hsto#hasRelativeDatation">has relative datation</a></li>
+  <li><a href="#stiffness" title="https://w3id.org/hsto#stiffness">stiffness</a></li>
+ </ul>
+ <div class="entity" id="hasAbsoluteDatation">
+  <h3>has absolute datation<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasAbsoluteDatation</p>
+  <div class="comment">
+   <span class="markdown">Records the absolute construction date or date range of a structural part or historic opening.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#HistoricOpening" title="https://w3id.org/hsto#HistoricOpening">Historic Opening</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasAccessibility">
+  <h3>has accessibility<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasAccessibility</p>
+  <div class="comment">
+   <span class="markdown">Indicates whether a structural part is accessible for detailed survey, helping quantify the level of structural knowledge available.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#boolean" target="_blank" title="http://www.w3.org/2001/XMLSchema#boolean">boolean</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasConnectionQuality">
+  <h3>has connection quality<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasConnectionQuality</p>
+  <div class="comment">
+   <span class="markdown">A qualitative assessment of connection effectiveness (e.g. good/poor) used to inform modelling strategies such as rigid vs. flexible connections in FEM analysis.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Connection" title="https://w3id.org/hsto#Connection">Connection</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasHeight">
+  <h3>has height<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasHeight</p>
+  <div class="comment">
+   <span class="markdown">The height of a facade, in metres.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Facade" title="https://w3id.org/hsto#Facade">Facade</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasLength">
+  <h3>has length<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasLength</p>
+  <div class="comment">
+   <span class="markdown">The length of a facade, in metres.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#Facade" title="https://w3id.org/hsto#Facade">Facade</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#decimal" target="_blank" title="http://www.w3.org/2001/XMLSchema#decimal">decimal</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="hasRelativeDatation">
+  <h3>has relative datation<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#hasRelativeDatation</p>
+  <div class="comment">
+   <span class="markdown">Records the relative construction chronology of a structural part or historic opening with respect to adjacent elements.</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#HistoricOpening" title="https://w3id.org/hsto#HistoricOpening">Historic Opening</a> <sup class="type-c" title="class">c</sup> <span class="logic">or</span> <a href="#StructuralPart" title="https://w3id.org/hsto#StructuralPart">Structural Part</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+ <div class="entity" id="stiffness">
+  <h3>stiffness<sup class="type-dp" title="data property">dp</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto#stiffness</p>
+  <div class="comment">
+   <span class="markdown">A qualitative or quantitative measure of the in-plane stiffness of a horizontal structural element (e.g. rigid/flexible).</span>
+  </div>
+  <div class="description">
+   <dl>
+    <dt>
+     has domain
+    </dt>
+    <dd>
+     <a href="#HorizontalStructure" title="https://w3id.org/hsto#HorizontalStructure">Horizontal Structure</a> <sup class="type-c" title="class">c</sup>
+    </dd>
+    <dt>
+     has range
+    </dt>
+    <dd>
+     <a href="http://www.w3.org/2001/XMLSchema#string" target="_blank" title="http://www.w3.org/2001/XMLSchema#string">string</a>
+    </dd>
+   </dl>
+  </div>
+ </div>
+</div><div xmlns:widoco="https://w3id.org/widoco/vocab#" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="namedindividuals">
+ <h3 id="namedindividuals" class="list">Named Individuals</h3>
+ <ul class="hlist">
+  <li><a href="#https://w3id.org/hsto" title="https://w3id.org/hsto"> <span>hsto</span> </a></li>
+ </ul>
+ <div class="entity" id="https://w3id.org/hsto">
+  <h3>hsto<sup class="type-ni" title="named individual">ni</sup> <span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a> </span></h3>
+  <p><strong>IRI:</strong> https://w3id.org/hsto</p>
+ </div>
+</div><div id="legend">
+<h2>Legend <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<div   class="entity">
+<sup class="type-c" title="Classes">c</sup>: Classes <br/>
+<sup class="type-op" title="Object Properties">op</sup>: Object Properties <br/>
+<sup class="type-dp" title="Data Properties">dp</sup>: Data Properties <br/>
+<sup class="type-ni" title="Named Individuals">ni</sup>: Named Individuals <br/>
+</div>
+</div>
+</div>
+    
+
+<!--REFERENCES SECTION-->
+  <div id="references">Cursi, S., Martinelli, L., Gigliarelli, E., Calcerano, F., Leonardi, M. L., Azenha, M., Oliveira, D. V., & Calvano, M. (2025). Leveraging linked data for enhanced knowledge representation in historical centers safety assessment: insights from Castelnuovo di Porto, Rome. Archeologia e Calcolatori, Supplemento 13, 217–231. https://doi.org/10.19282/acs.13.2025.16
+</div>
+<div id="acknowledgments">
+<h2 id="ack" class="list">Acknowledgments <span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+<p>
+The authors would like to thank <a href="http://www.essepuntato.it/">Silvio Peroni</a> for developing <a href="http://www.essepuntato.it/lode">LODE</a>, a Live OWL Documentation Environment, which is used for representing the Cross Referencing Section of this document and <a href="https://w3id.org/people/dgarijo">Daniel Garijo</a> for developing <a href="https://github.com/dgarijo/Widoco">Widoco</a>, the program used to create the template used in this documentation.</p>
+</div>
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,361 @@
+<https://w3id.org/hsto> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
+<https://w3id.org/hsto> <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/beo> .
+<https://w3id.org/hsto> <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/dot> .
+<https://w3id.org/hsto> <http://www.w3.org/2002/07/owl#imports> <https://w3id.org/hsv> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/creator> _:genid1 .
+_:genid1 <http://xmlns.com/foaf/0.1/name> "Maria Laura Leonardi" .
+_:genid1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/creator> _:genid2 .
+_:genid2 <http://xmlns.com/foaf/0.1/name> "Stefano Cursi" .
+_:genid2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/creator> _:genid3 .
+_:genid3 <http://xmlns.com/foaf/0.1/name> "Letizia Martinelli" .
+_:genid3 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/creator> _:genid4 .
+_:genid4 <http://xmlns.com/foaf/0.1/name> "Elena Gigliarelli" .
+_:genid4 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/creator> _:genid5 .
+_:genid5 <http://xmlns.com/foaf/0.1/name> "Miguel Azenha" .
+_:genid5 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/creator> _:genid6 .
+_:genid6 <http://xmlns.com/foaf/0.1/name> "Daniel V. Oliveira" .
+_:genid6 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/isReferencedBy> <https://doi.org/10.19282/acs.13.2025.16> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/license> <https://creativecommons.org/licenses/by/4.0/> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/title> "Historic Structure Ontology (HSTO)"@en .
+<https://w3id.org/hsto> <http://purl.org/vocab/vann/preferredNamespacePrefix> "hsto" .
+<https://w3id.org/hsto> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://w3id.org/hsto#" .
+<https://w3id.org/hsto> <http://www.w3.org/2002/07/owl#versionInfo> "1.0.0" .
+# 
+# 
+# #################################################################
+# #
+# #    Annotation properties
+# #
+# #################################################################
+# 
+# 
+# http://purl.org/dc/terms/isReferencedBy
+<http://purl.org/dc/terms/isReferencedBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Object Properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/hsto#hasDamage
+<https://w3id.org/hsto#hasDamage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#hasDamage> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#StructuralPart> .
+<https://w3id.org/hsto#hasDamage> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/dot#Damage> .
+<https://w3id.org/hsto#hasDamage> <http://www.w3.org/2000/01/rdf-schema#comment> "Associates a structural part with one or more damage instances described using the Damage Typology Ontology (DOT)."@en .
+<https://w3id.org/hsto#hasDamage> <http://www.w3.org/2000/01/rdf-schema#label> "has damage"@en .
+# 
+# https://w3id.org/hsto#hasHistoricOpening
+<https://w3id.org/hsto#hasHistoricOpening> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#hasHistoricOpening> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#Facade> .
+<https://w3id.org/hsto#hasHistoricOpening> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/hsto#HistoricOpening> .
+<https://w3id.org/hsto#hasHistoricOpening> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a facade to one or more historic openings present on its surface."@en .
+<https://w3id.org/hsto#hasHistoricOpening> <http://www.w3.org/2000/01/rdf-schema#label> "has historic opening"@en .
+# 
+# https://w3id.org/hsto#hasJoist
+<https://w3id.org/hsto#hasJoist> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#hasJoist> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#TimberFloor> .
+<https://w3id.org/hsto#hasJoist> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/hsto#Joist> .
+<https://w3id.org/hsto#hasJoist> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a timber floor to its joist elements."@en .
+<https://w3id.org/hsto#hasJoist> <http://www.w3.org/2000/01/rdf-schema#label> "has joist"@en .
+# 
+# https://w3id.org/hsto#hasMainBeam
+<https://w3id.org/hsto#hasMainBeam> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#hasMainBeam> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#TimberFloor> .
+<https://w3id.org/hsto#hasMainBeam> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/hsto#MainBeam> .
+<https://w3id.org/hsto#hasMainBeam> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a timber floor to its primary beam elements."@en .
+<https://w3id.org/hsto#hasMainBeam> <http://www.w3.org/2000/01/rdf-schema#label> "has main beam"@en .
+# 
+# https://w3id.org/hsto#hasOpeningComponent
+<https://w3id.org/hsto#hasOpeningComponent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#hasOpeningComponent> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/beo#BuildingElementPart> .
+<https://w3id.org/hsto#hasOpeningComponent> <http://www.w3.org/2000/01/rdf-schema#range> _:genid7 .
+_:genid7 <http://www.w3.org/2002/07/owl#unionOf> _:genid12 .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid11 .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid10 .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid9 .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid8 .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/hsto#Sill> .
+_:genid8 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/hsto#Lintel> .
+_:genid9 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/hsto#Jamb> .
+_:genid10 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/hsto#Header> .
+_:genid11 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/hsto#Arch> .
+_:genid12 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid7 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#hasOpeningComponent> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a BEO building element part to a heritage-specific opening component (sill, jamb, header, lintel, arch)."@en .
+<https://w3id.org/hsto#hasOpeningComponent> <http://www.w3.org/2000/01/rdf-schema#label> "has opening component"@en .
+# 
+# https://w3id.org/hsto#hasPlank
+<https://w3id.org/hsto#hasPlank> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#hasPlank> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#TimberFloor> .
+<https://w3id.org/hsto#hasPlank> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/hsto#Plank> .
+<https://w3id.org/hsto#hasPlank> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a timber floor to its plank elements forming the floor deck."@en .
+<https://w3id.org/hsto#hasPlank> <http://www.w3.org/2000/01/rdf-schema#label> "has plank"@en .
+# 
+# https://w3id.org/hsto#hasVaultPart
+<https://w3id.org/hsto#hasVaultPart> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#hasVaultPart> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#Vault> .
+<https://w3id.org/hsto#hasVaultPart> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/hsto#VaultPart> .
+<https://w3id.org/hsto#hasVaultPart> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a vault to its constituent parts, articulated at ABox level to capture specific typologies and geometries."@en .
+<https://w3id.org/hsto#hasVaultPart> <http://www.w3.org/2000/01/rdf-schema#label> "has vault part"@en .
+# 
+# https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique
+<https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#StructuralPart> .
+<https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/hsv#TraditionalConstructionTechnique> .
+<https://w3id.org/hsv#TraditionalConstructionTechnique> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a structural part to a traditional construction technique as documented in the HSV ontology."@en .
+<https://w3id.org/hsto#isBuiltWithTraditionalConstructionTechnique> <http://www.w3.org/2000/01/rdf-schema#label> "is built with traditional construction technique"@en .
+# 
+# https://w3id.org/hsto#isConnectedTo
+<https://w3id.org/hsto#isConnectedTo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#isConnectedTo> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#StructuralPart> .
+<https://w3id.org/hsto#isConnectedTo> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/hsto#Connection> .
+<https://w3id.org/hsto#isConnectedTo> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a structural part to a connection instance representing the physical interface with another structural part."@en .
+<https://w3id.org/hsto#isConnectedTo> <http://www.w3.org/2000/01/rdf-schema#label> "is connected to"@en .
+# 
+# https://w3id.org/hsto#isCoveredBy
+<https://w3id.org/hsto#isCoveredBy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#isCoveredBy> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#HorizontalStructure> .
+<https://w3id.org/hsto#isCoveredBy> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/beo#Covering> .
+<https://w3id.org/hsto#isCoveredBy> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a horizontal structure to the BEO covering element (floor finish or roof covering) overlying it."@en .
+<https://w3id.org/hsto#isCoveredBy> <http://www.w3.org/2000/01/rdf-schema#label> "is covered by"@en .
+# 
+# https://w3id.org/hsto#isHostedByDoor
+<https://w3id.org/hsto#isHostedByDoor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#isHostedByDoor> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#HistoricOpening> .
+<https://w3id.org/hsto#isHostedByDoor> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/beo#Door> .
+<https://w3id.org/hsto#isHostedByDoor> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a historic opening to the BEO door element that hosts it."@en .
+<https://w3id.org/hsto#isHostedByDoor> <http://www.w3.org/2000/01/rdf-schema#label> "is hosted by door"@en .
+# 
+# https://w3id.org/hsto#isHostedByWindow
+<https://w3id.org/hsto#isHostedByWindow> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#isHostedByWindow> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#HistoricOpening> .
+<https://w3id.org/hsto#isHostedByWindow> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/beo#Window> .
+<https://w3id.org/hsto#isHostedByWindow> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a historic opening to the BEO window element that hosts it."@en .
+<https://w3id.org/hsto#isHostedByWindow> <http://www.w3.org/2000/01/rdf-schema#label> "is hosted by window"@en .
+# 
+# https://w3id.org/hsto#isMadeOf
+<https://w3id.org/hsto#isMadeOf> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#ObjectProperty> .
+<https://w3id.org/hsto#isMadeOf> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#Facade> .
+<https://w3id.org/hsto#isMadeOf> <http://www.w3.org/2000/01/rdf-schema#range> <https://w3id.org/hmo#MasonryWall> .
+<https://w3id.org/hmo#MasonryWall> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#isMadeOf> <http://www.w3.org/2000/01/rdf-schema#comment> "Links a facade to the masonry wall instances that compose it, each corresponding to a portion with homogeneous geometric and constructional characteristics."@en .
+<https://w3id.org/hsto#isMadeOf> <http://www.w3.org/2000/01/rdf-schema#label> "is made of"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Data properties
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/hsto#hasAbsoluteDatation
+<https://w3id.org/hsto#hasAbsoluteDatation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/hsto#hasAbsoluteDatation> <http://www.w3.org/2000/01/rdf-schema#domain> _:genid13 .
+_:genid13 <http://www.w3.org/2002/07/owl#unionOf> _:genid15 .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid14 .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/hsto#StructuralPart> .
+_:genid14 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/hsto#HistoricOpening> .
+_:genid15 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid13 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#hasAbsoluteDatation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/hsto#hasAbsoluteDatation> <http://www.w3.org/2000/01/rdf-schema#comment> "Records the absolute construction date or date range of a structural part or historic opening."@en .
+<https://w3id.org/hsto#hasAbsoluteDatation> <http://www.w3.org/2000/01/rdf-schema#label> "has absolute datation"@en .
+# 
+# https://w3id.org/hsto#hasAccessibility
+<https://w3id.org/hsto#hasAccessibility> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/hsto#hasAccessibility> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#StructuralPart> .
+<https://w3id.org/hsto#hasAccessibility> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#boolean> .
+<https://w3id.org/hsto#hasAccessibility> <http://www.w3.org/2000/01/rdf-schema#comment> "Indicates whether a structural part is accessible for detailed survey, helping quantify the level of structural knowledge available."@en .
+<https://w3id.org/hsto#hasAccessibility> <http://www.w3.org/2000/01/rdf-schema#label> "has accessibility"@en .
+# 
+# https://w3id.org/hsto#hasConnectionQuality
+<https://w3id.org/hsto#hasConnectionQuality> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/hsto#hasConnectionQuality> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#Connection> .
+<https://w3id.org/hsto#hasConnectionQuality> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/hsto#hasConnectionQuality> <http://www.w3.org/2000/01/rdf-schema#comment> "A qualitative assessment of connection effectiveness (e.g. good/poor) used to inform modelling strategies such as rigid vs. flexible connections in FEM analysis."@en .
+<https://w3id.org/hsto#hasConnectionQuality> <http://www.w3.org/2000/01/rdf-schema#label> "has connection quality"@en .
+# 
+# https://w3id.org/hsto#hasHeight
+<https://w3id.org/hsto#hasHeight> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/hsto#hasHeight> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#Facade> .
+<https://w3id.org/hsto#hasHeight> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/hsto#hasHeight> <http://www.w3.org/2000/01/rdf-schema#comment> "The height of a facade, in metres."@en .
+<https://w3id.org/hsto#hasHeight> <http://www.w3.org/2000/01/rdf-schema#label> "has height"@en .
+# 
+# https://w3id.org/hsto#hasLength
+<https://w3id.org/hsto#hasLength> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/hsto#hasLength> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#Facade> .
+<https://w3id.org/hsto#hasLength> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#decimal> .
+<https://w3id.org/hsto#hasLength> <http://www.w3.org/2000/01/rdf-schema#comment> "The length of a facade, in metres."@en .
+<https://w3id.org/hsto#hasLength> <http://www.w3.org/2000/01/rdf-schema#label> "has length"@en .
+# 
+# https://w3id.org/hsto#hasRelativeDatation
+<https://w3id.org/hsto#hasRelativeDatation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/hsto#hasRelativeDatation> <http://www.w3.org/2000/01/rdf-schema#domain> _:genid16 .
+_:genid16 <http://www.w3.org/2002/07/owl#unionOf> _:genid18 .
+_:genid18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> _:genid17 .
+_:genid17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#rest> <http://www.w3.org/1999/02/22-rdf-syntax-ns#nil> .
+_:genid17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/hsto#StructuralPart> .
+_:genid17 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#first> <https://w3id.org/hsto#HistoricOpening> .
+_:genid18 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#List> .
+_:genid16 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#hasRelativeDatation> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/hsto#hasRelativeDatation> <http://www.w3.org/2000/01/rdf-schema#comment> "Records the relative construction chronology of a structural part or historic opening with respect to adjacent elements."@en .
+<https://w3id.org/hsto#hasRelativeDatation> <http://www.w3.org/2000/01/rdf-schema#label> "has relative datation"@en .
+# 
+# https://w3id.org/hsto#stiffness
+<https://w3id.org/hsto#stiffness> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#DatatypeProperty> .
+<https://w3id.org/hsto#stiffness> <http://www.w3.org/2000/01/rdf-schema#domain> <https://w3id.org/hsto#HorizontalStructure> .
+<https://w3id.org/hsto#stiffness> <http://www.w3.org/2000/01/rdf-schema#range> <http://www.w3.org/2001/XMLSchema#string> .
+<https://w3id.org/hsto#stiffness> <http://www.w3.org/2000/01/rdf-schema#comment> "A qualitative or quantitative measure of the in-plane stiffness of a horizontal structural element (e.g. rigid/flexible)."@en .
+<https://w3id.org/hsto#stiffness> <http://www.w3.org/2000/01/rdf-schema#label> "stiffness"@en .
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Classes
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/hmo#MasonryWall
+# 
+# https://w3id.org/hsto#Arch
+<https://w3id.org/hsto#Arch> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Arch> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/hsto#Header> .
+<https://w3id.org/hsto#Arch> <http://www.w3.org/2000/01/rdf-schema#comment> "A curved spanning element closing the top of a historic opening, typically featuring a keystone."@en .
+<https://w3id.org/hsto#Arch> <http://www.w3.org/2000/01/rdf-schema#label> "Arch"@en .
+# 
+# https://w3id.org/hsto#Connection
+<https://w3id.org/hsto#Connection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Connection> <http://www.w3.org/2000/01/rdf-schema#comment> "An explicit first-class object representing the physical interface between exactly two structural parts, enabling qualitative assessment of connection effectiveness."@en .
+<https://w3id.org/hsto#Connection> <http://www.w3.org/2000/01/rdf-schema#label> "Connection"@en .
+# 
+# https://w3id.org/hsto#Facade
+<https://w3id.org/hsto#Facade> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Facade> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/hsto#StructuralPart> .
+<https://w3id.org/hsto#Facade> <http://www.w3.org/2000/01/rdf-schema#comment> "A distinct structural object representing the exterior wall surface of a structural unit, capturing opening layout regularity, masonry typology variations, and damage patterns."@en .
+<https://w3id.org/hsto#Facade> <http://www.w3.org/2000/01/rdf-schema#label> "Facade"@en .
+# 
+# https://w3id.org/hsto#Header
+<https://w3id.org/hsto#Header> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Header> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/beo#BuildingElementPart> .
+<https://w3id.org/hsto#Header> <http://www.w3.org/2000/01/rdf-schema#comment> "The horizontal spanning element at the top of a historic opening; superclass of hsto:Lintel and hsto:Arch."@en .
+<https://w3id.org/hsto#Header> <http://www.w3.org/2000/01/rdf-schema#label> "Header"@en .
+# 
+# https://w3id.org/hsto#HistoricOpening
+<https://w3id.org/hsto#HistoricOpening> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#HistoricOpening> <http://www.w3.org/2000/01/rdf-schema#comment> "A wall opening considered historic, associated with both relative and absolute dating, whose configuration is relevant for seismic assessment."@en .
+<https://w3id.org/hsto#HistoricOpening> <http://www.w3.org/2000/01/rdf-schema#label> "Historic Opening"@en .
+# 
+# https://w3id.org/hsto#HorizontalStructure
+<https://w3id.org/hsto#HorizontalStructure> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#HorizontalStructure> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/hsto#StructuralPart> .
+<https://w3id.org/hsto#HorizontalStructure> <http://www.w3.org/2000/01/rdf-schema#comment> "A horizontal structural element such as a floor or roof assembly, providing diaphragm rigidity to the masonry aggregate."@en .
+<https://w3id.org/hsto#HorizontalStructure> <http://www.w3.org/2000/01/rdf-schema#label> "Horizontal Structure"@en .
+# 
+# https://w3id.org/hsto#Jamb
+<https://w3id.org/hsto#Jamb> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Jamb> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/beo#BuildingElementPart> .
+<https://w3id.org/hsto#Jamb> <http://www.w3.org/2000/01/rdf-schema#comment> "The vertical side framing element of a historic opening."@en .
+<https://w3id.org/hsto#Jamb> <http://www.w3.org/2000/01/rdf-schema#label> "Jamb"@en .
+# 
+# https://w3id.org/hsto#Joist
+<https://w3id.org/hsto#Joist> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Joist> <http://www.w3.org/2000/01/rdf-schema#comment> "A secondary timber element spanning between main beams or walls, supporting the floor planking."@en .
+<https://w3id.org/hsto#Joist> <http://www.w3.org/2000/01/rdf-schema#label> "Joist"@en .
+# 
+# https://w3id.org/hsto#Lintel
+<https://w3id.org/hsto#Lintel> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Lintel> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/hsto#Header> .
+<https://w3id.org/hsto#Lintel> <http://www.w3.org/2000/01/rdf-schema#comment> "A flat horizontal spanning element closing the top of a historic opening."@en .
+<https://w3id.org/hsto#Lintel> <http://www.w3.org/2000/01/rdf-schema#label> "Lintel"@en .
+# 
+# https://w3id.org/hsto#MainBeam
+<https://w3id.org/hsto#MainBeam> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#MainBeam> <http://www.w3.org/2000/01/rdf-schema#comment> "A primary timber beam supporting smaller joists in a timber floor assembly."@en .
+<https://w3id.org/hsto#MainBeam> <http://www.w3.org/2000/01/rdf-schema#label> "Main Beam"@en .
+# 
+# https://w3id.org/hsto#Plank
+<https://w3id.org/hsto#Plank> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Plank> <http://www.w3.org/2000/01/rdf-schema#comment> "A timber plank forming the floor deck, providing diaphragm rigidity when overlaid."@en .
+<https://w3id.org/hsto#Plank> <http://www.w3.org/2000/01/rdf-schema#label> "Plank"@en .
+# 
+# https://w3id.org/hsto#Quoin
+<https://w3id.org/hsto#Quoin> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Quoin> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/hsto#Connection> .
+<https://w3id.org/hsto#Quoin> <http://www.w3.org/2000/01/rdf-schema#comment> "A connection formed by regularly cut interlocking corner stones providing enhanced mechanical interlocking between orthogonal walls."@en .
+<https://w3id.org/hsto#Quoin> <http://www.w3.org/2000/01/rdf-schema#label> "Quoin"@en .
+# 
+# https://w3id.org/hsto#Sill
+<https://w3id.org/hsto#Sill> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Sill> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/beo#BuildingElementPart> .
+<https://w3id.org/hsto#Sill> <http://www.w3.org/2000/01/rdf-schema#comment> "The base threshold element of a historic opening."@en .
+<https://w3id.org/hsto#Sill> <http://www.w3.org/2000/01/rdf-schema#label> "Sill"@en .
+# 
+# https://w3id.org/hsto#StructuralPart
+<https://w3id.org/hsto#StructuralPart> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#StructuralPart> <http://www.w3.org/2000/01/rdf-schema#comment> "The main category for modelling individual structural components of a historic masonry aggregate, exhibiting material and construction homogeneity."@en .
+<https://w3id.org/hsto#StructuralPart> <http://www.w3.org/2000/01/rdf-schema#label> "Structural Part"@en .
+# 
+# https://w3id.org/hsto#Tie
+<https://w3id.org/hsto#Tie> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Tie> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/hsto#Connection> .
+<https://w3id.org/hsto#Tie> <http://www.w3.org/2000/01/rdf-schema#comment> "A connection formed by metallic or wooden anchors used to tie structural parts together in historic masonry construction."@en .
+<https://w3id.org/hsto#Tie> <http://www.w3.org/2000/01/rdf-schema#label> "Tie"@en .
+# 
+# https://w3id.org/hsto#TimberFloor
+<https://w3id.org/hsto#TimberFloor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#TimberFloor> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/hsto#HorizontalStructure> .
+<https://w3id.org/hsto#TimberFloor> <http://www.w3.org/2000/01/rdf-schema#comment> "A horizontal structural assembly composed of timber elements such as beams, joists, and planks."@en .
+<https://w3id.org/hsto#TimberFloor> <http://www.w3.org/2000/01/rdf-schema#label> "Timber Floor"@en .
+# 
+# https://w3id.org/hsto#Vault
+<https://w3id.org/hsto#Vault> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#Vault> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://w3id.org/hsto#HorizontalStructure> .
+<https://w3id.org/hsto#Vault> <http://www.w3.org/2000/01/rdf-schema#comment> "A masonry vault used as a horizontal structural element, typically in lower storeys. Kept generic at TBox level; specific vault typologies are articulated at ABox level through hsto:VaultPart instances."@en .
+<https://w3id.org/hsto#Vault> <http://www.w3.org/2000/01/rdf-schema#label> "Vault"@en .
+# 
+# https://w3id.org/hsto#VaultPart
+<https://w3id.org/hsto#VaultPart> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://w3id.org/hsto#VaultPart> <http://www.w3.org/2000/01/rdf-schema#comment> "A constituent part of a masonry vault, used at ABox level to articulate specific vault typologies and geometries."@en .
+<https://w3id.org/hsto#VaultPart> <http://www.w3.org/2000/01/rdf-schema#label> "Vault Part"@en .
+# 
+# https://w3id.org/hsv#TraditionalConstructionTechnique
+# 
+# 
+# 
+# #################################################################
+# #
+# #    Individuals
+# #
+# #################################################################
+# 
+# 
+# https://w3id.org/hsto
+<https://w3id.org/hsto> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#NamedIndividual> .
+<https://w3id.org/hsto> <http://purl.org/dc/terms/description> "The Historic Structure Ontology (HSTO) provides a formal representation of the physical configuration of masonry aggregates by explicitly modelling the relationships among their structural components, including facades, horizontal structures, openings, and connections."@en .
+# 
+# Generated by the OWL API (version 5.1.18) https://github.com/owlcs/owlapi/
